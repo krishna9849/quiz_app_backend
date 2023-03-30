@@ -2,6 +2,7 @@ const express=require('express');
 const quiz=require('./db/quizzes')
 const cors = require('cors');
 const quizRouter=require('./router/quiz.router')
+const usersData=require('./db/users');
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,23 @@ app.get('/' , (req,res)=>{
 // })
 
 app.use('/quiz' , quizRouter)
+
+app.post('/auth/login' , (req,res)=>{
+
+    const {username , password} = req.body;
+    const isUserVerified=usersData.users.some((user)=> user.username===username && user.password===password);
+    if(isUserVerified){
+        res.json({
+            message : "User logged in successfully"
+        })
+    }
+    else{
+        res.status(401).json({
+            message : "Invalid credentials !!"
+        })
+    }
+})
+
 
 app.listen(process.env.PORT || PORT , ()=>{
 
