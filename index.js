@@ -4,6 +4,9 @@ const cors = require('cors');
 const quizRouter=require('./router/quiz.router')
 const usersData=require('./db/users');
 const bodyParser = require('body-parser');
+const jwt=require('jsonwebtoken')
+const authRouter=require('./router/auth.router')
+
 
 
 const app = express();
@@ -30,21 +33,7 @@ app.use('/quiz' , quizRouter)
 
 
 
-app.post('/auth/login' , (req,res)=>{
-
-    const {username , password} = req.body;
-    const isUserVerified=usersData.users.some((user)=> user.username===username && user.password===password);
-    if(isUserVerified){
-        res.json({
-            message : "User logged in successfully"
-        })
-    }
-    else{
-        res.status(401).json({
-            message : "Invalid credentials !!"
-        })
-    }
-})
+app.post('/auth/login' ,authRouter);
 
 
 app.listen(process.env.PORT || PORT , ()=>{
