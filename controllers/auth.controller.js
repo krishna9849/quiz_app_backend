@@ -5,7 +5,7 @@ const jwt=require('jsonwebtoken')
 const authController= (req,res)=>{
 
         const {username , password} = req.body;
-        const token = jwt.sign({id : username } , process.env.SECRET_KEY)
+        const token = jwt.sign({id : username }, "abcdef");
         const isUserVerified=usersData.users.some((user)=> user.username===username && user.password===password);
         if(isUserVerified){
             res.json({
