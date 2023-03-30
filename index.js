@@ -1,7 +1,7 @@
 const express=require('express');
 const quiz=require('./db/quizzes')
 const cors = require('cors');
-
+const quizRouter=require('./router/quiz.router')
 
 const app = express();
 app.use(cors());
@@ -15,10 +15,11 @@ app.get('/' , (req,res)=>{
     res.send("Hello geeks")
 });
 
-app.get('/quiz' , (req,res)=>{
-    res.send(quiz.data);
-})
+// app.get('/quiz' , (req,res)=>{
+//     res.send(quiz.data);
+// })
 
+app.use('/quiz' , quizRouter)
 
 app.listen(process.env.PORT || PORT , ()=>{
 
