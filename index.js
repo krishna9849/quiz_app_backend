@@ -3,9 +3,16 @@ const quiz=require('./db/quizzes')
 const cors = require('cors');
 const quizRouter=require('./router/quiz.router')
 const usersData=require('./db/users');
+const body= require('body-parser');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(cors());
+
+app.use(bodyParser.urlencoded());
+
+
 
 const PORT=3000;
 
@@ -21,6 +28,8 @@ app.get('/' , (req,res)=>{
 // })
 
 app.use('/quiz' , quizRouter)
+
+
 
 app.post('/auth/login' , (req,res)=>{
 
