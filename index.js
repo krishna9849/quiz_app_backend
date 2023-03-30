@@ -1,10 +1,13 @@
 const express=require('express');
 const quiz=require('./db/quizzes')
+const cors = require('cors');
+
 
 const app = express();
 
 const PORT=3000;
 
+app.use(cors());
 
 app.get('/' , (req,res)=>{
 
