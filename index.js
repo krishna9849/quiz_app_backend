@@ -33,7 +33,7 @@ app.use('/quiz' , quizRouter)
 
 
 
-app.post('/auth/login' ,authRouter);
+app.use('/auth/login' ,authRouter);
 
 
 app.listen(process.env.PORT || PORT , ()=>{
