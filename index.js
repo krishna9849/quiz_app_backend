@@ -11,7 +11,7 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded());
 
-
+app.use(express.json());
 
 const PORT=3000;
 
