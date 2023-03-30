@@ -1,5 +1,5 @@
 const express=require('express');
-const usersData=require('./db/users');
+const usersData=require('../db/users');
 const jwt=require('jsonwebtoken')
 
 const authController= (req,res)=>{
