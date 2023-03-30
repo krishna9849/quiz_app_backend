@@ -1,6 +1,6 @@
 const { v4: uuid } = require("uuid");
 
-const quiz={
+const quizzes={
     data : [
         // 1st quiz card
         {
@@ -54,3 +54,6 @@ const quiz={
         } 
     ]
 }
+
+
+module.exports=quizzes;
