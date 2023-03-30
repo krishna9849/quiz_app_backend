@@ -3,7 +3,6 @@ const quiz=require('./db/quizzes')
 const cors = require('cors');
 const quizRouter=require('./router/quiz.router')
 const usersData=require('./db/users');
-const body= require('body-parser');
 const bodyParser = require('body-parser');
 
 
