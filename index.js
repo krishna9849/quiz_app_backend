@@ -9,6 +9,7 @@ const authRouter=require('./router/auth.router')
 
 const {SignInRouter , SignUpRouter} = authRouter;
 const authVerify=require('./middlewares/authVerify.mw')
+const noRouteFound=require('./middlewares/noRouteFound.mw')
 
 const app = express();
 app.use(cors());
@@ -37,6 +38,7 @@ app.use('/auth/signup' ,SignUpRouter);
 
 app.use('/auth/login'  , SignInRouter);
 
+app.use(noRouteFound);
 
 app.listen(process.env.PORT || PORT , ()=>{
 
