@@ -1,6 +1,6 @@
 const {v4 : uuid} = require('uuid');
 
-const usersData={
+let usersData={
 
     users : [{
         id : uuid(),
