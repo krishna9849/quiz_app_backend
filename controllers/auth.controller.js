@@ -7,7 +7,7 @@ const SignUpHandler = (req,res)=>{
 
     const {username , password}=req.body;
 
-    const isUserExist= usersData.some(user=> user.username === username);
+    const isUserExist= usersData.users.some(user=> user.username === username);
     if(isUserExist){
         res.status(422).json({message : "User already exist"})
     }
