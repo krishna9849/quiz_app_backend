@@ -2,6 +2,8 @@ const express = require("express");
 const usersData = require("../db/users");
 const jwt = require("jsonwebtoken");
 const { v4: uuid } = require("uuid");
+const authVerify=require('../middlewares/authVerify.mw')
+
 
 const SignUpHandler = (req, res) => {
   const { username, password } = req.body;

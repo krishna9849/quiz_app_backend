@@ -8,7 +8,7 @@ const jwt=require('jsonwebtoken')
 const authRouter=require('./router/auth.router')
 
 const {SignInRouter , SignUpRouter} = authRouter;
-
+const authVerify=require('./middlewares/authVerify.mw')
 
 const app = express();
 app.use(cors());
@@ -30,12 +30,12 @@ app.get('/' , (req,res)=>{
 //     res.send(quiz.data);
 // })
 
-app.use('/quiz' , quizRouter)
+app.use('/quiz' ,authVerify, quizRouter)
 
 
 app.use('/auth/signup' ,SignUpRouter);
 
-app.use('/auth/login' ,SignInRouter);
+app.use('/auth/login'  , SignInRouter);
 
 
 app.listen(process.env.PORT || PORT , ()=>{
