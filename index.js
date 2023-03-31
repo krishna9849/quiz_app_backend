@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const jwt=require('jsonwebtoken')
 const authRouter=require('./router/auth.router')
 
+const {SignInRouter , SignUpRouter} = authRouter;
 
 
 const app = express();
@@ -32,8 +33,9 @@ app.get('/' , (req,res)=>{
 app.use('/quiz' , quizRouter)
 
 
+app.use('/auth/signup' ,SignUpRouter);
 
-app.use('/auth/login' ,authRouter);
+app.use('/auth/login' ,SignInRouter);
 
 
 app.listen(process.env.PORT || PORT , ()=>{

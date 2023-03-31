@@ -1,8 +1,28 @@
 const express=require('express');
 const usersData=require('../db/users');
 const jwt=require('jsonwebtoken')
+const {v4 : uuid } =require('uuid');
 
-const authController= (req,res)=>{
+const SignUpHandler = (req,res)=>{
+
+    const {username , password}=req.body;
+
+    const isUserExist= usersData.some(user=> user.username === username);
+    if(isUserExist){
+        res.status(422).json({message : "User already exist"})
+    }
+    else {
+        const newUser={id : uuid(),username : username , password : password};
+        const token = jwt.sign({id : username} , "abcdef")
+        usersData=[...usersData.users , newUser];
+        res.json({username : username , token : token , message : `${username}'s profile has been created successfully`})
+    }
+
+}
+
+
+
+const SignInHandler= (req,res)=>{
 
         const {username , password} = req.body;
         const token = jwt.sign({id : username }, "abcdef");
@@ -22,4 +42,4 @@ const authController= (req,res)=>{
     }
 
 
-    module.exports=authController;
+    module.exports={SignInHandler , SignUpHandler};

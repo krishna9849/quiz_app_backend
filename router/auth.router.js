@@ -1,9 +1,12 @@
 const express=require('express');
 const authController=require('../controllers/auth.controller')
 
+const {SignInHandler , SignUpHandler}= authController
 
+const SignInRouter=express.Router();
+const SignUpRouter=express.Router();
 
-const authRouter=express.Router();
-authRouter.route('/').post(authController)
+SignInRouter.route('/').post(SignInHandler)
+SignUpRouter.route('/').post(SignUpHandler)
 
-module.exports=authRouter;
+module.exports={SignInRouter  , SignUpRouter};
