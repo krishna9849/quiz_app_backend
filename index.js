@@ -6,7 +6,7 @@ const usersData=require('./db/users');
 const bodyParser = require('body-parser');
 const jwt=require('jsonwebtoken')
 const authRouter=require('./router/auth.router')
-
+const categoryRouter=require('./router/categories.router');
 const {SignInRouter , SignUpRouter} = authRouter;
 const authVerify=require('./middlewares/authVerify.mw')
 const noRouteFound=require('./middlewares/noRouteFound.mw')
@@ -31,6 +31,7 @@ app.get('/' , (req,res)=>{
 //     res.send(quiz.data);
 // })
 
+app.use('/category' , categoryRouter);
 app.use('/quiz' ,authVerify, quizRouter)
 
 
