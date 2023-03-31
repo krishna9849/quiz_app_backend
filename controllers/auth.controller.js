@@ -7,12 +7,12 @@ const SignUpHandler = (req,res)=>{
 
     const {username , password}=req.body;
     console.log(username,password);
-    
 
-    // const isUserExist= usersData.users.some(user=> user.username === username);
-    // if(isUserExist){
-    //     res.status(422).json({message : "User already exist"})
-    // }
+
+    const isUserExist= usersData.users.some(user=> user.username === username);
+    if(isUserExist){
+        res.status(422).json({message : "User already exist"})
+    }
     // else {
     //     const newUser={id : uuid(),username : username , password : password};
     //     const token = jwt.sign({id : username} , "abcdef")
