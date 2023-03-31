@@ -13,12 +13,14 @@ const SignUpHandler = (req,res)=>{
     if(isUserExist){
         res.status(422).json({message : "User already exist"})
     }
-    // else {
-    //     const newUser={id : uuid(),username : username , password : password};
-    //     const token = jwt.sign({id : username} , "abcdef")
-    //     usersData=[...usersData.users , newUser];
-    //     res.json({username : username , token : token , message : `${username}'s profile has been created successfully`})
-    // }
+    else {
+       // const newUser={id : uuid(),username : username , password : password}; // wrong initialization
+       const id = uuid();
+       const newUser={id , username,password};
+        const token = jwt.sign({id : username} , "abcdef")
+        usersData=[...usersData.users , newUser];
+        res.json({username : username , token : token , message : `${username}'s profile has been created successfully`})
+    }
 
 }
 
