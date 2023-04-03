@@ -33,8 +33,6 @@ app.get('/' , (req,res)=>{
 
 app.use('/category' , categoryRouter);
 app.use('/quiz' ,authVerify, quizRouter)
-
-
 app.use('/auth/signup' ,SignUpRouter);
 
 app.use('/auth/login'  , SignInRouter);

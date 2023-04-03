@@ -6,7 +6,7 @@ const categoryRouter= express.Router();
 
 categoryRouter.route('/')
     .get((req,res)=>{
-        res.send(quizzes.data);
+        res.json(quizzes.data);
     })
 
 module.exports=categoryRouter
